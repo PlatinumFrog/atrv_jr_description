@@ -1,0 +1,381 @@
+<?xml version="1.0"?>
+<!-- Chassis Width: 0.387m -->
+<!-- Chassis Length: 0.642m -->
+<!-- Chassis Height: 0.224m -->
+<!-- Wheel Diameter: 0.315m -->
+<!-- Wheel Width: 0.105m -->
+<!-- Wheel to Body: 0.125m -->
+<!-- Axle Distance: 0.386m -->
+<!-- Calculation 1: 0.1185m (0.237 / 2) -->
+<!-- Calculation 2: 0.193m (0.386 / 2) -->
+<!-- Calculation 3: 0.2635m (0.387 / 2 + 0.07) -->
+
+<!-- Front Lidar Width: 0.155m -->
+<!-- Front Lidar Length: 0.155m -->
+<!-- Front Lidar Height: 0.185m -->
+<robot name="ATRV_JR">
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
+    
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+
+    <material name="skyblue">
+        <color rgba="0.0 0.75 1.0 1.0"/>
+    </material>
+
+    <!-- Base Link -->
+    <link name="base_link"/>
+
+    <!-- Chassis Link -->
+    <link name="Chassis">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitChassisVisual.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitChassisCollision.stl"/>
+            </geometry>
+        </collision>
+       <inertial>
+            <mass value="45"/>
+            <inertia ixx="1.20932883" ixy="0.0" ixz="0.0" iyy="2.18651931" iyz="0.0" izz="2.18651931"/>
+        </inertial>
+    </link>
+
+
+    <!-- Front Lidar Link -->
+    <link name="FrontLidarCase">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitFrontLidarVisual.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <box>0.156 0.155 0.185</box>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="2"/>
+            <inertia ixx="0.009" ixy="0.0" ixz="0.0" iyy="0.009" iyz="0.0" izz="0.009"/>
+        </inertial>
+    </link>
+
+    <!-- Front Lidar Scanner Link -->
+    <link name="FrontLidarScanner">
+        <inertial>
+            <mass value="0.0001"/>
+            <inertia ixx="0.009" ixy="0.0" ixz="0.0" iyy="0.009" iyz="0.0" izz="0.009"/>
+        </inertial>
+    </link>
+
+    <!-- Front Lidar Glass Link 
+    <link name="FrontLidarGlass">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitFrontLidarGlass.stl"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitFrontLidarGlass.stl"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.5"/>
+            <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+    </link>-->
+
+    <link name="BackCameraCase">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitBackCameraCase.stl"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitBackCameraCase.stl"/>
+            </geometry>
+            <material name="black"/>
+        </collision>
+        <inertial>
+            <mass value="0.001"/>
+            <inertia ixx="0.002" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+    </link>
+
+    <!-- Back Camera Stand Link 
+    <link name="BackCameraStand">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitBackCameraStand.stl"/>
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitBackCameraStand.stl"/>
+            </geometry>
+            <material name="silver"/>
+        </collision>
+        <inertial>
+            <mass value="0.5"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+    </link>-->
+
+    <!-- Back Camera Head Link
+    <link name="BackCameraHead">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitBackCameraHead.stl"/>
+            </geometry>
+            <material name="silver"/>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitBackCameraHead.stl"/>
+            </geometry>
+            <material name="silver"/>
+        </collision>
+        <inertial>
+            <mass value="0.5"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+    </link> -->
+
+    <!-- Left Front Link -->
+    <link name="WheelLeftFront">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitWheelVisual.dae"/>
+            </geometry>
+            <origin rpy="-3.14159265359 0 0"/>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.1575" length="0.105"/>
+            </geometry>
+            <origin rpy="-1.57079632679 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="2"/>
+            <inertia ixx="0.014240625" ixy="0.0" ixz="0.0" iyy="0.014240625" iyz="0.0" izz="0.02480625"/>
+            <origin xyz="0 0 0" rpy="1.57079632679 0 0"/>
+        </inertial>
+    </link>
+
+    <!-- Right Front Link -->
+    <link name="WheelRightFront">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitWheelVisual.dae"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.1575" length="0.105"/>
+            </geometry>
+            <origin rpy="1.57079632679 0 0"/>
+        </collision>
+       <inertial>
+            <mass value="2"/>
+            <inertia ixx="0.014240625" ixy="0.0" ixz="0.0" iyy="0.014240625" iyz="0.0" izz="0.02480625"/>
+            <origin xyz="0 0 0" rpy="1.57079632679 0 0"/>
+        </inertial>
+    </link>
+
+    <!-- Left Back Link -->
+    <link name="WheelLeftBack">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitWheelVisual.dae"/>
+            </geometry>
+            <origin rpy="-3.14159265359 0 0"/>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.1575" length="0.105"/>
+            </geometry>
+            <origin rpy="-1.57079632679 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="2"/>
+            <inertia ixx="0.014240625" ixy="0.0" ixz="0.0" iyy="0.014240625" iyz="0.0" izz="0.02480625"/>
+            <origin xyz="0 0 0" rpy="1.57079632679 0 0"/>
+        </inertial>
+    </link>
+
+    <!-- Right Back Link -->
+    <link name="WheelRightBack">
+        <visual>
+            <geometry>
+                <mesh filename="file://$(find atrv_jr_description)/meshes/robitWheelVisual.dae"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.1575" length="0.105"/>
+            </geometry>
+            <origin rpy="1.57079632679 0 0"/>
+        </collision>
+        <inertial>
+            <mass value="2"/>
+            <inertia ixx="0.014240625" ixy="0.0" ixz="0.0" iyy="0.014240625" iyz="0.0" izz="0.02480625"/>
+            <origin xyz="0 0 0" rpy="1.57079632679 0 0"/>
+        </inertial>
+    </link>
+    <gazebo reference="BackCameraCase">
+        <visual>
+            <material>
+                <diffuse>0.2 0.2 0.2 1</diffuse>
+                <ambient>0.1 0.1 0.1 1</ambient>
+                <emissive>0 0 0 0</emissive>
+            </material>
+        </visual>
+    </gazebo>
+    <!-- Front Lidar -->
+    <gazebo reference="FrontLidarScanner">
+        <sensor name="laser" type="ray">
+            <parent link="FrontLidarScanner"/>
+            <visualize>true</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                    <samples>180</samples>
+                    <min_angle>-1.57</min_angle>
+                    <max_angle>1.57</max_angle>
+                    </horizontal>
+                </scan>
+                <range>
+                    <min>0.05</min>
+                    <max>2</max>
+                </range>
+            </ray>
+            <plugin name="fl_controller" filename="libgazebo_ros_ray_sensor.so">
+                <ros>
+                    <argument>-/out:=scan</argument>
+                </ros>
+                <output_type>sensor_msgs/LaserScan</output_type>
+                <frame_name>FrontLidar</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+    <!-- START OF JOINTS -->
+    <joint name="ChassisJoint" type="fixed">
+        <parent link="base_link"/>
+        <child link="Chassis"/>
+        <origin xyz="0 0 0.23"/>
+    </joint>
+
+    <joint name="FrontLidarHolster" type="fixed">
+        <parent link="Chassis"/>
+        <child link="FrontLidarCase"/>
+        <origin xyz="0.321 0 -0.085"/>
+    </joint>
+
+    <joint name="FrontLidarVision" type="fixed">
+        <parent link="FrontLidarCase"/>
+        <child link="FrontLidarScanner"/>
+        <origin xyz="0.08 0 -0.03"/>
+    </joint>4
+
+    <joint name="BackCameraHolster" type="fixed">
+        <parent link="Chassis"/>
+        <child link="BackCameraCase"/>
+        <origin xyz="-0.285 0 0.3115"/>
+    </joint>
+<!-- <joint name="BackCameraStandJoint" type="fixed">
+        <parent link="BackCameraCase"/>
+        <child link="BackCameraStand"/>
+        <origin xyz="0 0 -0.045"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-1" upper="1" effort="5" velocity="2"/>  FOR REVOLUTE
+    </joint>
+
+    <joint name="BackCameraHeadJoint" type="fixed">
+        <parent link="BackCameraStand"/>
+        <child link="BackCameraHead"/>
+        <origin xyz="0 0 0.05" rpy="0 -3.14 0"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0" friction="0.75"/>
+        <limit lower="-1" upper="1" effort="5" velocity="2"/> FOR REVOLUTE
+    </joint>
+-->
+    <joint name="AxleLeftFront" type="continuous">
+        <parent link="Chassis"/>
+        <child link="WheelLeftFront"/>
+        <origin xyz="0.193 0.2635 -0.07" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+    
+    <joint name="AxleRightFront" type="continuous">
+        <parent link="Chassis"/>
+        <child link="WheelRightFront"/>
+        <origin xyz="0.193 -0.2635 -0.07" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint name="AxleLeftBack" type="continuous">
+        <parent link="Chassis"/>
+        <child link="WheelLeftBack"/>
+        <origin xyz="-0.193 0.2635 -0.07" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    <joint name="AxleRightBack" type="continuous">
+        <parent link="Chassis"/>
+        <child link="WheelRightBack"/>
+        <origin xyz="-0.193 -0.2635 -0.07" rpy="0 0 0"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+    <gazebo>
+        <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+            <left_joint>AxleLeftFront</left_joint>
+            <right_joint>AxleRightFront</right_joint>
+            <wheel_separation>0.435</wheel_separation>
+            <wheel_diameter>0.315</wheel_diameter>
+
+            <max_wheel_torque>30.0</max_wheel_torque>
+            <max_wheel_acceleration>0.7</max_wheel_acceleration>
+
+            <odometry_frame>odom</odometry_frame>
+            <robot_base_frame>base_link</robot_base_frame>
+            <publish_odom>true</publish_odom>
+            <publish_odom_tf>true</publish_odom_tf>
+            <publish_wheel_tf>true</publish_wheel_tf>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="diff_drive2" filename="libgazebo_ros_diff_drive.so">
+            <left_joint>AxleLeftBack</left_joint>
+            <right_joint>AxleRightBack</right_joint>
+            <wheel_separation>0.435</wheel_separation>
+            <wheel_diameter>0.315</wheel_diameter>
+
+            <max_wheel_torque>30.0</max_wheel_torque>
+            <max_wheel_acceleration>0.7</max_wheel_acceleration>
+
+            <odometry_frame>odom</odometry_frame>
+            <robot_base_frame>base_link</robot_base_frame>
+            <publish_odom>true</publish_odom>
+            <publish_odom_tf>true</publish_odom_tf>
+            <publish_wheel_tf>true</publish_wheel_tf>
+        </plugin>
+    </gazebo>
+</robot>
