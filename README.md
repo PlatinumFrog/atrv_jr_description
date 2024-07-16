@@ -1,1 +1,1 @@
-A Ros2 Humble package for IRobot ATRV - JR
+Model description of ATRV-JR for use with ros2, gazebo, and rviz2.
